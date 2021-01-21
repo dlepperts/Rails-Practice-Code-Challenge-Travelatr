@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<% sorted = @destination.posts.order(:created_at)[0..4] %>
+<% sorted.each do |post| %>
+    <%= post.title %><br>
+    <%= post.content %><br>
+    <%= post.created_at %><br>
+    <br>
+<% end %>
+
+<h4>Average Age of Bloggers Who Have Written About This Destination</h4>
+
+<% ages = @destination.bloggers.map{|blogger| blogger.age}%>
+<%= ages.sum/ages.count %>
+<br>
+
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<%= link_to 'Back', destinations_path %>

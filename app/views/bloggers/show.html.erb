@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Total Likes:</h4>
+<% total = 0 %>
+<% @blogger.posts.each do |post| %>
+    <% total += post.likes %>
+<% end %>
+<%= total %> <br>
+
+<h4>Most Number of Likes on One Post:</h4>
+<% counter = 0 %>
+<% @blogger.posts.each do |post| %>
+    <% if post.likes > counter %>
+        <% counter = post.likes %>
+    <% end %>
+<% end %>
+<%= counter %> <br>
+
+
+<%= link_to 'Edit', edit_blogger_path(@blogger) %> |
+<%= link_to 'Back', bloggers_path %>
